@@ -1,4 +1,4 @@
-   <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -46,6 +46,9 @@
 </head>
 <body>
 
+  <!-- Hidden audio -->
+  <audio id="birthdaySong" src="Pretty.mp3"></audio>
+
   <!-- Step 1 -->
   <div id="step1" class="popup" style="display:block;">
     <h1>🎉 It's Your Special Day, Chudail! 🎉</h1>
@@ -62,7 +65,7 @@
   <!-- Step 3 -->
   <div id="step3" class="popup">
     <p>Have a look at it, Varenya</p>
-    <button class="button blue" onclick="showStep4()">Lights On</button>
+    <button class="button blue" onclick="lightsOn()">Lights On</button>
     <button class="button pink" onclick="playMusic()">Play Music</button>
     <button class="button purple" onclick="decorate()">Decorate</button>
     <button class="button red" onclick="flyBalloons()">Fly the Balloons</button>
@@ -72,7 +75,7 @@
   <div id="step4" class="popup">
     <h2>🎂 Happy Birthday 🎂</h2>
     <p>Let's Cut the Cake Varenya</p>
-    <img src="cake-mansi.png" alt="Cake" style="width:200px; border-radius:12px;">
+    <img src="cake-mansi.png" alt="Cake for Mansi" style="width:200px; border-radius:12px;">
     <br><br>
     <button class="button red" onclick="showStep5()">Next</button>
   </div>
@@ -91,9 +94,6 @@
     </p>
   </div>
 
-  <!-- Hidden audio -->
-  <audio id="birthdaySong" src="Pretty.mp3"></audio>
-
   <script>
     // Auto change Step 1 -> Step 2 after 3 seconds
     setTimeout(() => {
@@ -108,25 +108,48 @@
     function stopFlow() {
       document.getElementById("step2").innerHTML = "<h2>Aww okay 😢</h2>";
     }
-    function showStep4() {
-      document.getElementById("step3").style.display = "none";
-      document.getElementById("step4").style.display = "block";
-    }
-    function showStep5() {
-      document.getElementById("step4").style.display = "none";
-      document.getElementById("step5").style.display = "block";
+
+    // Flags for Step 3 buttons
+    let lightsDone = false;
+    let musicDone = false;
+    let decorateDone = false;
+    let balloonsDone = false;
+
+    function checkAllDone() {
+      if (lightsDone && musicDone && decorateDone && balloonsDone) {
+        document.getElementById("step3").style.display = "none";
+        document.getElementById("step4").style.display = "block";
+      }
     }
 
-    // Effects
-    function flyBalloons() {
-      alert("🎈 Balloons flying!");
+    function lightsOn() {
+      alert("💡 Lights On!");
+      lightsDone = true;
+      checkAllDone();
     }
-    function decorate() {
-      alert("🎊 Decorations activated!");
-    }
+
     function playMusic() {
       const song = document.getElementById("birthdaySong");
       song.play();
+      musicDone = true;
+      checkAllDone();
+    }
+
+    function decorate() {
+      alert("🎊 Decorations activated!");
+      decorateDone = true;
+      checkAllDone();
+    }
+
+    function flyBalloons() {
+      alert("🎈 Balloons flying!");
+      balloonsDone = true;
+      checkAllDone();
+    }
+
+    function showStep5() {
+      document.getElementById("step4").style.display = "none";
+      document.getElementById("step5").style.display = "block";
     }
   </script>
 
