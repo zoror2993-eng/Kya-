@@ -2,20 +2,17 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Birthday Page</title>
+  <title>Birthday Surprise</title>
   <style>
     body {
       background: pink;
       font-family: Arial, sans-serif;
       text-align: center;
+      transition: background 1s;
     }
-    .card {
-      background: white;
-      padding: 20px;
-      margin: 50px auto;
-      width: 300px;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    .block {
+      display: none;
+      margin-top: 50px;
     }
     .balloon {
       position: absolute;
@@ -49,16 +46,46 @@
 </head>
 <body>
 
-  <div class="card">
-    <h2>🎂 Happy Birthday 🎂</h2>
-    <p>Let's Cut the Cake Varanya</p>
-    <button id="cutBtn">Cut</button>
-    <br><br>
-    <button onclick="releaseBalloons()">Balloons</button>
-    <button onclick="playMusic()">Play Music</button>
-    <button onclick="toggleDecorate()">Decorate</button>
+  <!-- Block 1 -->
+  <div id="block1" class="block">
+    <h2>It’s Your Special Dayyy Yeyyyy!</h2>
   </div>
 
+  <!-- Block 2 -->
+  <div id="block2" class="block">
+    <h2>Do you wanna see what I made??</h2>
+    <button onclick="showBlock(3)">Yes!</button>
+    <button onclick="alert('Okay, maybe next time!')">No</button>
+  </div>
+
+  <!-- Block 3 -->
+  <div id="block3" class="block" style="background:black; color:white; padding:20px;">
+    <button onclick="lightOn()">Light On</button>
+    <button onclick="releaseBalloons()">Balloons</button>
+    <button onclick="toggleDecorate()">Decorate</button>
+    <button onclick="playMusic()">Play Music</button>
+    <button onclick="showBlock(4)">Next</button>
+  </div>
+
+  <!-- Block 4 (Cake Section) -->
+  <div id="block4" class="block">
+    <h2>Let’s Cut the Cake Varenya 🎂</h2>
+    <!-- Tum apna cake image yahan dal dena -->
+    <img src="cake.png" alt="Cake" width="200">
+    <br><br>
+    <button onclick="alert('Cake cutting done 🎂')">Cut</button>
+    <button onclick="showBlock(5)">Next</button>
+  </div>
+
+  <!-- Block 5 (Password Gate) -->
+  <div id="block5" class="block">
+    <h2>Enter Password</h2>
+    <p>Hint: Purane wale web me jo tha dono me se koi bhi dal do</p>
+    <input type="text" id="passwordInput">
+    <button onclick="checkPassword()">Submit</button>
+  </div>
+
+  <!-- Block 6 (Final Message) -->
   <div id="messageBlock">
     <p>Happy Birthday ✨<br>
     Another year, another reason to celebrate the wonderful person you are.<br>
@@ -69,23 +96,21 @@
   <audio id="bgMusic" src="Pretty.mp3"></audio>
 
   <script>
-    // Cut button flow
-    document.getElementById("cutBtn").addEventListener("click", function() {
-      alert("Cake cutting done 🎂");
-      let nextBtn = document.createElement("button");
-      nextBtn.innerText = "Next";
-      nextBtn.onclick = askPassword;
-      document.querySelector(".card").appendChild(nextBtn);
-    });
+    // Show block function
+    function showBlock(num) {
+      document.querySelectorAll('.block').forEach(b => b.style.display = 'none');
+      document.getElementById('block'+num).style.display = 'block';
+    }
 
-    // Password prompt
-    function askPassword() {
-      let pass = prompt("Enter password:\nHint: Purane wale web me jo tha dono me se koi bhi dal do");
+    // Password check
+    function checkPassword() {
+      let pass = document.getElementById("passwordInput").value;
       let valid = ["chudail","Chudail","master","Master","Priyanshi","priyanshi"];
       if(valid.includes(pass)) {
+        document.querySelectorAll('.block').forEach(b => b.style.display = 'none');
         document.getElementById("messageBlock").style.display = "block";
       } else {
-        alert("Wrong password ❌");
+        alert("Wrong password ❌ Try again");
       }
     }
 
@@ -109,6 +134,18 @@
     // Decorate toggle
     function toggleDecorate() {
       document.body.classList.toggle("decorate");
+    }
+
+    // Light on
+    function lightOn() {
+      document.body.style.background = "pink";
+      document.body.style.color = "black";
+    }
+
+    // Auto start Block 1 then Block 2 after 2 sec
+    window.onload = function() {
+      showBlock(1);
+      setTimeout(() => showBlock(2), 2000);
     }
   </script>
 
