@@ -6,14 +6,43 @@
   <style>
     body {
       background: pink;
-      font-family: Arial, sans-serif;
-      text-align: center;
+      font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
       transition: background 1s;
     }
     .block {
       display: none;
-      margin-top: 50px;
+      text-align: center;
+      padding: 30px;
+      border-radius: 12px;
+      background: rgba(255,255,255,0.8);
+      box-shadow: 0 0 15px rgba(0,0,0,0.2);
+      max-width: 500px;
     }
+    h2 {
+      color: #d6336c;
+      margin-bottom: 20px;
+    }
+    button {
+      margin: 8px;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: 0.3s;
+    }
+    button:hover {
+      transform: scale(1.05);
+    }
+    .yes-btn { background: #ff4d6d; color: white; }
+    .no-btn { background: #6c63ff; color: white; }
+    .action-btn { background: #ffb703; color: black; }
+    .next-btn { background: #38b000; color: white; }
     .balloon {
       position: absolute;
       bottom: 0;
@@ -38,9 +67,11 @@
     #messageBlock {
       display: none;
       margin-top: 20px;
-      padding: 15px;
+      padding: 20px;
       background: #fff0f5;
-      border-radius: 8px;
+      border-radius: 12px;
+      font-size: 18px;
+      color: #333;
     }
   </style>
 </head>
@@ -48,47 +79,49 @@
 
   <!-- Block 1 -->
   <div id="block1" class="block">
-    <h2>It’s Your Special Dayyy Yeyyyy!</h2>
+    <h2>It’s Your Special Dayyy Yeyyyy! 🎉</h2>
   </div>
 
   <!-- Block 2 -->
   <div id="block2" class="block">
-    <h2>Do you wanna see what I made??</h2>
-    <button onclick="showBlock(3)">Yes!</button>
-    <button onclick="alert('Okay, maybe next time!')">No</button>
+    <h2>Do you wanna see what I made?? ✨</h2>
+    <button class="yes-btn" onclick="showBlock(3)">Yes!</button>
+    <button class="no-btn" onclick="alert('Okay, maybe next time!')">No</button>
   </div>
 
   <!-- Block 3 -->
-  <div id="block3" class="block" style="background:black; color:white; padding:20px;">
-    <button onclick="lightOn()">Light On</button>
-    <button onclick="releaseBalloons()">Balloons</button>
-    <button onclick="toggleDecorate()">Decorate</button>
-    <button onclick="playMusic()">Play Music</button>
-    <button onclick="showBlock(4)">Next</button>
+  <div id="block3" class="block" style="background:black; color:white;">
+    <h2>Choose an Option 🎈</h2>
+    <button class="action-btn" onclick="lightOn()">Light On</button>
+    <button class="action-btn" onclick="releaseBalloons()">Balloons</button>
+    <button class="action-btn" onclick="toggleDecorate()">Decorate</button>
+    <button class="action-btn" onclick="playMusic()">Play Music</button>
+    <button class="next-btn" onclick="showBlock(4)">Next</button>
   </div>
 
   <!-- Block 4 (Cake Section) -->
   <div id="block4" class="block">
     <h2>Let’s Cut the Cake Varenya 🎂</h2>
     <!-- Tum apna cake image yahan dal dena -->
-    <img src="cake.png" alt="Cake" width="200">
+    <img src="cake.png" alt="Cake" width="250" style="border-radius:12px; box-shadow:0 0 10px rgba(0,0,0,0.3);">
     <br><br>
-    <button onclick="alert('Cake cutting done 🎂')">Cut</button>
-    <button onclick="showBlock(5)">Next</button>
+    <button class="action-btn" onclick="alert('Cake cutting done 🎂')">Cut</button>
+    <button class="next-btn" onclick="showBlock(5)">Next</button>
   </div>
 
   <!-- Block 5 (Password Gate) -->
   <div id="block5" class="block">
-    <h2>Enter Password</h2>
+    <h2>Enter Password 🔑</h2>
     <p>Hint: Purane wale web me jo tha dono me se koi bhi dal do</p>
-    <input type="text" id="passwordInput">
-    <button onclick="checkPassword()">Submit</button>
+    <input type="text" id="passwordInput" style="padding:8px; border-radius:6px; border:1px solid #ccc;">
+    <br><br>
+    <button class="next-btn" onclick="checkPassword()">Submit</button>
   </div>
 
   <!-- Block 6 (Final Message) -->
-  <div id="messageBlock">
-    <p>Happy Birthday ✨<br>
-    Another year, another reason to celebrate the wonderful person you are.<br>
+  <div id="messageBlock" class="block">
+    <p>🎂 Happy Birthday ✨<br><br>
+    Another year, another reason to celebrate the wonderful person you are.<br><br>
     I liked you. The words came late, the story ended fast, but the feeling was true.</p>
   </div>
 
