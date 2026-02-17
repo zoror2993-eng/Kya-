@@ -2,154 +2,113 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Happy Birthday Chudail</title>
+  <title>Birthday Page</title>
   <style>
     body {
-      background-color: #ffe6f0;
-      font-family: 'Comic Sans MS', cursive, sans-serif;
-      margin: 0;
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-    .popup {
-      display: none;
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      background: white;
-      padding: 30px;
-      border-radius: 12px;
-      box-shadow: 0 0 15px rgba(0,0,0,0.2);
+      background: pink;
+      font-family: Arial, sans-serif;
       text-align: center;
-      max-width: 500px;
     }
-    .popup h1, .popup h2, .popup p {
-      margin: 15px 0;
+    .card {
+      background: white;
+      padding: 20px;
+      margin: 50px auto;
+      width: 300px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
     }
-    .button {
-      display: inline-block;
-      margin: 10px;
-      padding: 12px 25px;
-      font-size: 1em;
-      border: none;
+    .balloon {
+      position: absolute;
+      bottom: 0;
+      width: 30px;
+      height: 50px;
+      border-radius: 50%;
+      animation: floatUp 6s linear forwards;
+    }
+    @keyframes floatUp {
+      from { bottom: 0; opacity: 1; }
+      to { bottom: 100vh; opacity: 0; }
+    }
+    .decorate {
+      background: url('https://i.ibb.co/7jfqXxB/confetti.png') repeat;
+      animation: sparkle 2s infinite;
+    }
+    @keyframes sparkle {
+      0% { opacity: 0.5; }
+      50% { opacity: 1; }
+      100% { opacity: 0.5; }
+    }
+    #messageBlock {
+      display: none;
+      margin-top: 20px;
+      padding: 15px;
+      background: #fff0f5;
       border-radius: 8px;
-      cursor: pointer;
     }
-    .red { background-color: #ff4d4d; color: white; }
-    .purple { background-color: #cc66ff; color: white; }
-    .pink { background-color: #ff99cc; color: white; }
-    .blue { background-color: #66ccff; color: white; }
   </style>
 </head>
 <body>
 
-  <!-- Hidden audio -->
-  <audio id="birthdaySong" src="Pretty.mp3"></audio>
-
-  <!-- Step 1 -->
-  <div id="step1" class="popup" style="display:block;">
-    <h1>🎉 It's Your Special Day, Chudail! 🎉</h1>
-  </div>
-
-  <!-- Step 2 -->
-  <div id="step2" class="popup">
-    <p>To make something special for you, you are special to me!</p>
-    <p>Do you wanna see what I made??</p>
-    <button class="button red" onclick="showStep3()">Yes!</button>
-    <button class="button purple" onclick="stopFlow()">No</button>
-  </div>
-
-  <!-- Step 3 -->
-  <div id="step3" class="popup">
-    <p>Have a look at it, Varenya</p>
-    <button class="button blue" onclick="lightsOn()">Lights On</button>
-    <button class="button pink" onclick="playMusic()">Play Music</button>
-    <button class="button purple" onclick="decorate()">Decorate</button>
-    <button class="button red" onclick="flyBalloons()">Fly the Balloons</button>
-  </div>
-
-  <!-- Step 4 -->
-  <div id="step4" class="popup">
+  <div class="card">
     <h2>🎂 Happy Birthday 🎂</h2>
-    <p>Let's Cut the Cake Varenya</p>
-    <img src="cake-mansi.png" alt="Cake for Mansi" style="width:200px; border-radius:12px;">
+    <p>Let's Cut the Cake Varanya</p>
+    <button id="cutBtn">Cut</button>
     <br><br>
-    <button class="button red" onclick="showStep5()">Next</button>
+    <button onclick="releaseBalloons()">Balloons</button>
+    <button onclick="playMusic()">Play Music</button>
+    <button onclick="toggleDecorate()">Decorate</button>
   </div>
 
-  <!-- Step 5 -->
-  <div id="step5" class="popup">
-    <h2>Dear Varenya,</h2>
-    <p>
-      Even though we have met recently & I guess we know nothing about each other,  
-      this was the way to show you how much you mean to me.  
-      This is a way to show that our friendship just started.  
-      I hope we will be making some great memories together.  
-      I'm starting this new year with a new friend as you and I hope our friendship lasts forever.  
-      <br><br>
-      And on your special day, I wish you the happiest birthday.
-    </p>
+  <div id="messageBlock">
+    <p>Happy Birthday ✨<br>
+    Another year, another reason to celebrate the wonderful person you are.<br>
+    I liked you. The words came late, the story ended fast, but the feeling was true.</p>
   </div>
+
+  <!-- Music file -->
+  <audio id="bgMusic" src="Pretty.mp3"></audio>
 
   <script>
-    // Auto change Step 1 -> Step 2 after 3 seconds
-    setTimeout(() => {
-      document.getElementById("step1").style.display = "none";
-      document.getElementById("step2").style.display = "block";
-    }, 3000);
+    // Cut button flow
+    document.getElementById("cutBtn").addEventListener("click", function() {
+      alert("Cake cutting done 🎂");
+      let nextBtn = document.createElement("button");
+      nextBtn.innerText = "Next";
+      nextBtn.onclick = askPassword;
+      document.querySelector(".card").appendChild(nextBtn);
+    });
 
-    function showStep3() {
-      document.getElementById("step2").style.display = "none";
-      document.getElementById("step3").style.display = "block";
-    }
-    function stopFlow() {
-      document.getElementById("step2").innerHTML = "<h2>Aww okay 😢</h2>";
-    }
-
-    // Flags for Step 3 buttons
-    let lightsDone = false;
-    let musicDone = false;
-    let decorateDone = false;
-    let balloonsDone = false;
-
-    function checkAllDone() {
-      if (lightsDone && musicDone && decorateDone && balloonsDone) {
-        document.getElementById("step3").style.display = "none";
-        document.getElementById("step4").style.display = "block";
+    // Password prompt
+    function askPassword() {
+      let pass = prompt("Enter password:\nHint: Purane wale web me jo tha dono me se koi bhi dal do");
+      let valid = ["chudail","Chudail","master","Master","Priyanshi","priyanshi"];
+      if(valid.includes(pass)) {
+        document.getElementById("messageBlock").style.display = "block";
+      } else {
+        alert("Wrong password ❌");
       }
     }
 
-    function lightsOn() {
-      alert("💡 Lights On!");
-      lightsDone = true;
-      checkAllDone();
+    // Balloons animation
+    function releaseBalloons() {
+      for(let i=0; i<10; i++) {
+        let balloon = document.createElement("div");
+        balloon.className = "balloon";
+        balloon.style.left = Math.random()*100 + "vw";
+        balloon.style.background = ["red","blue","yellow","green","purple"][Math.floor(Math.random()*5)];
+        document.body.appendChild(balloon);
+        setTimeout(() => balloon.remove(), 6000);
+      }
     }
 
+    // Play music
     function playMusic() {
-      const song = document.getElementById("birthdaySong");
-      song.play();
-      musicDone = true;
-      checkAllDone();
+      document.getElementById("bgMusic").play();
     }
 
-    function decorate() {
-      alert("🎊 Decorations activated!");
-      decorateDone = true;
-      checkAllDone();
-    }
-
-    function flyBalloons() {
-      alert("🎈 Balloons flying!");
-      balloonsDone = true;
-      checkAllDone();
-    }
-
-    function showStep5() {
-      document.getElementById("step4").style.display = "none";
-      document.getElementById("step5").style.display = "block";
+    // Decorate toggle
+    function toggleDecorate() {
+      document.body.classList.toggle("decorate");
     }
   </script>
 
