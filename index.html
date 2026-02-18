@@ -12,7 +12,7 @@
       align-items: center;
       height: 100vh;
       margin: 0;
-      transition: background 1s;
+      transition: background 1s,color 1s;
     }
     .block {
       display: none;
@@ -190,10 +190,11 @@
 }
 
     // Light on
-    function lightOn() {
-      document.body.style.background = "pink";
-      document.body.style.color = "black";
-    }
+     function lightOn() {
+  let block3 = document.getElementById("block3");
+  block3.style.background = "pink";   // black → pink
+  block3.style.color = "black";       // white → black
+}
 
     // Auto start Block 1 then Block 2 after 2 sec
     window.onload = function() {
