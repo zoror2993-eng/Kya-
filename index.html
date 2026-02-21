@@ -86,9 +86,6 @@
   from { transform: translateY(0); opacity: 1; }
   to { transform: translateY(100vh); opacity: 0; }
 }
-    body.dark-mode {
-  background: black !important; /* poora page black */
-}
   </style>
 </head>
 <body>
@@ -204,16 +201,6 @@
       showBlock(1);
       setTimeout(() => showBlock(2), 2000);
     }
-    function showBlock3() {
-  // Jab block 3 aaye, poora background black ho
-  document.body.classList.add("dark-mode");
-  document.getElementById("block3").style.display = "block";
-}
-
-function lightOn() {
-  // Light On dabate hi background normal pink ho jaaye
-  document.body.classList.remove("dark-mode");
-}
   </script>
 
 </body>
