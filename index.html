@@ -12,7 +12,7 @@
       align-items: center;
       height: 100vh;
       margin: 0;
-      transition: background 1s,color 1s;
+      transition: background 1s ease ,color 1s ease;
     }
     .block {
       display: none;
@@ -89,6 +89,11 @@
     #block3 {
   transition: background 1s, color 1s;
     }
+body.dark-mode {
+  background: black !important;
+  color: white; /* optional, agar text bhi dark mode me white chahiye */
+}
+
   </style>
 </head>
 <body>
@@ -197,6 +202,9 @@
   let block3 = document.getElementById("block3");
   block3.style.background = "pink";   // black → pink
   block3.style.color = "black";       // white → black
+  document.body.classList.remove("dark-mode");
+  document.getElementById("block3").style.background = "rgba(255,255,255,0.8)";
+
 }
 
     // Auto start Block 1 then Block 2 after 2 sec
