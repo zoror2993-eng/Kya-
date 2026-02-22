@@ -109,16 +109,15 @@
   </div>
 
   <!-- Block 3 -->
-  <div id="block3-wrapper">
-  <div id="block3" class="block" style="background:black; color:white;">
-    <h2>click all one by one 🎈</h2>
-    <button class="action-btn" onclick="lightOn()">Light On</button>
-    <button class="action-btn" onclick="releaseBalloons()">Balloons</button>
-     <button class="action-btn" onclick="decorateSparkles()">Decorate</button>
-    <button class="action-btn" onclick="playMusic()">Play Music</button>
-    <button class="next-btn" onclick="showBlock(4)">Next</button>
-  </div>
-  </div>
+   <div id="block3" class="block" style="background:black; color:white;">
+  <h2>Click all one by one 🎈</h2>
+  <button class="action-btn" onclick="lightOn()">Light On</button>
+  <button class="action-btn" onclick="releaseBalloons()">Balloons</button>
+  <button class="action-btn" onclick="decorateSparkles()">Decorate</button>
+  <button class="action-btn" onclick="playMusic()">Play Music</button>
+  <button class="next-btn" onclick="showBlock(4)">Next</button>
+</div>
+
   <!-- Block 4 (Cake Section) -->
   <div id="block4" class="block">
     <h2>Let’s Cut the Cake Varenya 🎂</h2>
@@ -197,12 +196,12 @@
 }
 
     // Light on
-     function lightOn() {
+      
+function lightOn() {
   let block3 = document.getElementById("block3");
-  block3.style.background = "pink";   // black → pink
-  block3.style.color = "black";       // white → black
-  document.body.classList.remove("dark-mode");
-  document.getElementById("block3").style.background = "rgba(255,255,255,0.8)";
+  block3.style.background = "rgba(255,255,255,0.8)"; // Wapas normal white background
+  block3.style.color = "#d6336c"; // Text color pinkish
+  document.body.style.background = "pink"; // Poora page pink
 }
 
     // Auto start Block 1 then Block 2 after 2 sec
