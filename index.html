@@ -89,11 +89,9 @@
     #block3 {
   transition: background 1s, color 1s;
     }
-body.dark-mode {
+#block3-wrapper.dark-mode {
   background: black !important;
-  color: white; /* optional, agar text bhi dark mode me white chahiye */
 }
-
   </style>
 </head>
 <body>
@@ -111,15 +109,16 @@ body.dark-mode {
   </div>
 
   <!-- Block 3 -->
+  <div id="block3-wrapper.darkmode">
   <div id="block3" class="block" style="background:black; color:white;">
-    <h2>Choose an Option 🎈</h2>
+    <h2>click all one by one 🎈</h2>
     <button class="action-btn" onclick="lightOn()">Light On</button>
     <button class="action-btn" onclick="releaseBalloons()">Balloons</button>
      <button class="action-btn" onclick="decorateSparkles()">Decorate</button>
     <button class="action-btn" onclick="playMusic()">Play Music</button>
     <button class="next-btn" onclick="showBlock(4)">Next</button>
   </div>
-
+  </div>
   <!-- Block 4 (Cake Section) -->
   <div id="block4" class="block">
     <h2>Let’s Cut the Cake Varenya 🎂</h2>
@@ -204,13 +203,17 @@ body.dark-mode {
   block3.style.color = "black";       // white → black
   document.body.classList.remove("dark-mode");
   document.getElementById("block3").style.background = "rgba(255,255,255,0.8)";
-
 }
 
     // Auto start Block 1 then Block 2 after 2 sec
     window.onload = function() {
       showBlock(1);
       setTimeout(() => showBlock(2), 2000);
+    }
+    function showBlock3() {
+  // Jab block 3 aaye, sirf block3-wrapper black ho
+  document.getElementById("block3-wrapper").classList.add("dark-mode");
+  document.getElementById("block3").style.display = "block";
     }
   </script>
 
