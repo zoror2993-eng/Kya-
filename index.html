@@ -89,6 +89,21 @@
     #block3 {
   transition: background 1s, color 1s;
     } 
+    /* Isse aapka button Cyan color ka ho jayega */
+.cyan-btn { background: #00e5ff; color: black; font-weight: bold; }
+/* Azure Blue button design */
+.azure-btn { 
+  background: #007fff; 
+  color: white; 
+  font-weight: bold; 
+  box-shadow: 0 0 10px rgba(0, 127, 255, 0.5); /* Thoda sa glow effect */
+}
+
+.azure-btn:hover {
+  background: #0056b3; /* Hover karne par thoda dark blue */
+  transform: scale(1.1);
+}
+
   </style>
 </head>
 <body>
@@ -120,8 +135,8 @@
     <!-- Tum apna cake image yahan dal dena -->
     <img src="cake-mansi-diya.png" alt="Cake" width="250" style="border-radius:12px; box-shadow:0 0 10px rgba(0,0,0,0.3);">
     <br><br>
-    <button class="action-btn" onclick="alert('Cake cutting done 🎂')">Cut</button>
-    <button class="next-btn" onclick="showBlock(5)">Next</button>
+    <button class="cyan-btn" onclick="alert('Cake cutting done 🎂')">Cut</button>
+    <button class="azure-btn" onclick="showBlock(5)">Next</button>
   </div>
 
   <!-- Block 5 (Password Gate) -->
