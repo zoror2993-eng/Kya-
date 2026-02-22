@@ -88,10 +88,7 @@
 }
     #block3 {
   transition: background 1s, color 1s;
-    }
-#block3-wrapper.dark-mode {
-  background: black !important;
-}
+    } 
   </style>
 </head>
 <body>
@@ -208,11 +205,6 @@ function lightOn() {
     window.onload = function() {
       showBlock(1);
       setTimeout(() => showBlock(2), 2000);
-    }
-    function showBlock3() {
-  // Jab block 3 aaye, sirf block3-wrapper black ho
-  document.getElementById("block3-wrapper").classList.add("dark-mode");
-  document.getElementById("block3").style.display = "block";
     }
   </script>
 
