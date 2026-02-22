@@ -135,7 +135,9 @@
     <!-- Tum apna cake image yahan dal dena -->
     <img src="cake-mansi-diya.png" alt="Cake" width="250" style="border-radius:12px; box-shadow:0 0 10px rgba(0,0,0,0.3);">
     <br><br>
-    <button class="cyan-btn" onclick="alert('Cake cutting done 🎂')">Cut</button>
+    <button class="azure-btn" id="cyan-btn" onclick="cutCake()">Cut the Cake 🔪</button>
+
+<div id="cakeMessage" style="margin-top: 15px; font-weight: bold; color: #d6336c; font-size: 20px;"></div>
     <button class="azure-btn" onclick="showBlock(5)">Next</button>
   </div>
 
@@ -229,6 +231,22 @@ function startSurprise() {
   showBlock(3); 
   document.body.style.background = "black"; 
 }
+    function cutCake() {
+  // 1. Dher saari chamki (Confetti) girao
+  // Hum ise 3 baar call karenge taaki screen bhar jaye
+  decorateSparkles();
+  setTimeout(decorateSparkles, 500);
+  setTimeout(decorateSparkles, 1000);
+
+  // 2. "Cut" button ko gayab kar do taaki page saaf dikhe
+  document.getElementById("cutBtn").style.display = "none";
+
+  // 3. Ek sweet message dikhao
+  document.getElementById("cakeMessage").innerHTML = "Yeyyy! Cake Cutting Done! 🎂✨";
+
+  // 4. (Optional) Chaho toh yahan ek "Next" button bhi auto-show kar sakte ho
+  // Agar next button pehle se niche hai toh wo dikhta rahega
+    }
   </script>
 
 </body>
