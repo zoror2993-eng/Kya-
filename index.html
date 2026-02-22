@@ -101,8 +101,8 @@
   <!-- Block 2 -->
   <div id="block2" class="block">
     <h2>Do you wanna see what I made?? ✨</h2>
-    <button class="yes-btn" onclick="showBlock(3)">Yes!</button>
-    <button class="no-btn" onclick="alert('Okay, maybe next time!')">No</button>
+     <button class="yes-btn" onclick="startSurprise()">Yes!</button>
+<button class="no-btn" onclick="alert('Okay, maybe next time!')">No</button>
   </div>
 
   <!-- Block 3 -->
@@ -192,13 +192,17 @@
   }
 }
 
-    // Light on
-      
+    // Light on      
+ // Ye function "Light On" dabate hi sab wapas pink aur white kar dega
 function lightOn() {
   let block3 = document.getElementById("block3");
-  block3.style.background = "rgba(255,255,255,0.8)"; // Wapas normal white background
-  block3.style.color = "#d6336c"; // Text color pinkish
-  document.body.style.background = "pink"; // Poora page pink
+  
+  // Block 3 ko wapas normal white-pinkish karo
+  block3.style.background = "rgba(255,255,255,0.8)"; 
+  block3.style.color = "#d6336c"; 
+  
+  // Poore page ko wapas pink karo
+  document.body.style.background = "pink";
 }
 
     // Auto start Block 1 then Block 2 after 2 sec
@@ -206,6 +210,11 @@ function lightOn() {
       showBlock(1);
       setTimeout(() => showBlock(2), 2000);
     }
+    // Ye function "Yes" dabate hi screen black karega aur Block 3 dikhayega
+function startSurprise() {
+  showBlock(3); 
+  document.body.style.background = "black"; 
+}
   </script>
 
 </body>
