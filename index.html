@@ -207,15 +207,34 @@
     }
 
     // Decorate toggle
-      function decorateSparkles() {
-  for(let i=0; i<30; i++) {
-    let sparkle = document.createElement("div");
-    sparkle.className = "sparkle";
-    sparkle.style.left = Math.random()*100 + "vw";
-    sparkle.style.background = ["#ff0000","#0000ff","#008000","#800080","#ff8c00"][Math.floor(Math.random()*5)];
-    document.body.appendChild(sparkle);
-    setTimeout(() => sparkle.remove(), 4000);
-  }
+       let lanternInterval; // Isse hum lanterns ko control karenge
+
+function decorateSparkles() {
+  // Purane intervals clear karein taaki speed na badhe
+  clearInterval(lanternInterval);
+  
+  // Har 400ms mein ek naya lantern banega
+  lanternInterval = setInterval(function() {
+    let lantern = document.createElement("div");
+    lantern.innerHTML = "🏮"; 
+    lantern.style.position = "absolute";
+    lantern.style.bottom = "-50px";
+    lantern.style.left = Math.random() * 100 + "vw";
+    lantern.style.fontSize = Math.random() * 20 + 20 + "px";
+    lantern.style.transition = "transform 8s linear, opacity 8s";
+    lantern.style.pointerEvents = "none";
+    lantern.style.zIndex = "1000";
+    document.body.appendChild(lantern);
+
+    // Dheere upar udayein
+    setTimeout(() => {
+      lantern.style.transform = `translateY(-120vh) translateX(${Math.random() * 100 - 50}px)`;
+      lantern.style.opacity = "0";
+    }, 100);
+
+    // Memory saaf karne ke liye
+    setTimeout(() => lantern.remove(), 8000);
+  }, 400); 
 }
 
     // Light on      
@@ -241,22 +260,24 @@ function startSurprise() {
   showBlock(3); 
   document.body.style.background = "black"; 
 }
-    function cutCake() {
-  // 1. Dher saari chamki (Confetti) girao
-  // Hum ise 3 baar call karenge taaki screen bhar jaye
-  decorateSparkles();
-  setTimeout(decorateSparkles, 500);
-  setTimeout(decorateSparkles, 1000);
+     function cutCake() {
+  // 1. Lanterns ko rok do
+  clearInterval(lanternInterval);
 
-  // 2. "Cut" button ko gayab kar do taaki page saaf dikhe
+  // 2. Cake Cutting wala effect (Sparkles)
+  for(let i=0; i<30; i++) {
+    let sparkle = document.createElement("div");
+    sparkle.className = "sparkle";
+    sparkle.style.left = Math.random()*100 + "vw";
+    sparkle.style.background = ["#ff0000","#0000ff","#008000","#800080","#ff8c00"][Math.floor(Math.random()*5)];
+    document.body.appendChild(sparkle);
+    setTimeout(() => sparkle.remove(), 4000);
+  }
+
+  // 3. Button gayab aur message dikhana
   document.getElementById("cutBtn").style.display = "none";
-
-  // 3. Ek sweet message dikhao
   document.getElementById("cakeMessage").innerHTML = "Yeyyy! Cake Cutting Done! 🎂✨";
-
-  // 4. (Optional) Chaho toh yahan ek "Next" button bhi auto-show kar sakte ho
-  // Agar next button pehle se niche hai toh wo dikhta rahega
-    }
+     }
     function startCountdown() {
     // 23 March 2026 ki date
     const targetDate = new Date("March 23, 2026 00:00:00").getTime();
