@@ -130,32 +130,34 @@
   <button class="yes-btn" onclick="showBlock(4)">Next</button>
      </div>
   <!-- Block 4 (Cake Section) -->
-     <div id="block4" class="block">
-    <h2>Let’s Cut the Cake Varenya 🎂</h2>
-    <img src="cake-mansi-diya.png" alt="Cake" width="250" style="border-radius:12px; box-shadow:0 0 10px rgba(0,0,0,0.3);">
-    <br><br>
-    
-    <button class="cyan-btn" id="cutBtn" onclick="cutCake()">Cut the Cake 🔪</button>
+  <div id="block4" class="block">
+  <h2>Let’s Cut the Cake Varenya 🎂</h2>
+  <img src="cake-mansi-diya.png" alt="Cake" width="250" style="border-radius:12px; box-shadow:0 0 10px rgba(0,0,0,0.3);">
+  <br><br>
+  
+  <button class="cyan-btn" id="cutBtn" onclick="cutCake()">Cut the Cake 🔪</button>
 
-    <div id="cakeMessage" style="margin-top: 15px; font-weight: bold; color: #d6336c; font-size: 20px;"></div>
-    
-    <button class="azure-btn" onclick="showBlock(5)">Next</button>
-  </div> 
-  <div id="timerContainer" style="text-align: center; margin-top: 20px; font-family: 'Courier New', Courier, monospace;">
-      <div id="timer" style="font-size: 35px; font-weight: bold; color: #007fff; text-shadow: 0 0 10px rgba(0,127,255,0.3);">
-          00:00:00:00
-      </div>
-      <div id="birthdayMsg" style="font-size: 22px; color: #d6336c; font-weight: bold; margin-top: 10px; display: none;">
-          It's finally your birthday! 🎉✨
-      </div>
-  </div>
+  <div id="cakeMessage" style="margin-top: 15px; font-weight: bold; color: #d6336c; font-size: 20px;"></div>
+  
+  <br>
+  <button class="azure-btn" onclick="showBlock(5)">Next</button>
+</div> 
+<div id="timerContainer" style="position: absolute; bottom: 50px; left: 50%; transform: translateX(-50%); text-align: center; width: 100%;">
+    <div id="timer" style="font-size: 35px; font-weight: bold; color: #007fff; text-shadow: 0 0 10px rgba(0,127,255,0.3); font-family: 'Courier New', Courier, monospace;">
+        00:00:00:00
+    </div>
+    <div id="birthdayMsg" style="font-size: 22px; color: #d6336c; font-weight: bold; margin-top: 10px; display: none;">
+        It's finally your birthday! 🎉✨
+    </div>
+</div>
+     
   <!-- Block 5 (Password Gate) -->
   <div id="block5" class="block">
     <h2>Enter Password 🔑</h2>
     <p>Hint: Purane wale web me jo tha dono me se koi bhi dal do</p>
     <input type="text" id="passwordInput" style="padding:8px; border-radius:6px; border:1px solid #ccc;">
     <br><br>
-    <button class="cyan-btn" onclick="checkPassword()">Submit</button>
+    <button class="cyan-btn" onclick="checkPasswor d()">Submit</button>
   </div>
 
   <!-- Block 6 (Final Message) -->
