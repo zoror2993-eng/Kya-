@@ -130,17 +130,25 @@
   <button class="yes-btn" onclick="showBlock(4)">Next</button>
      </div>
   <!-- Block 4 (Cake Section) -->
-  <div id="block4" class="block">
+     <div id="block4" class="block">
     <h2>Let’s Cut the Cake Varenya 🎂</h2>
-    <!-- Tum apna cake image yahan dal dena -->
     <img src="cake-mansi-diya.png" alt="Cake" width="250" style="border-radius:12px; box-shadow:0 0 10px rgba(0,0,0,0.3);">
     <br><br>
+    
     <button class="cyan-btn" id="cutBtn" onclick="cutCake()">Cut the Cake 🔪</button>
 
-<div id="cakeMessage" style="margin-top: 15px; font-weight: bold; color: #d6336c; font-size: 20px;"></div>
+    <div id="cakeMessage" style="margin-top: 15px; font-weight: bold; color: #d6336c; font-size: 20px;"></div>
+    
     <button class="azure-btn" onclick="showBlock(5)">Next</button>
+  </div> 
+  <div id="timerContainer" style="text-align: center; margin-top: 20px; font-family: 'Courier New', Courier, monospace;">
+      <div id="timer" style="font-size: 35px; font-weight: bold; color: #007fff; text-shadow: 0 0 10px rgba(0,127,255,0.3);">
+          00:00:00:00
+      </div>
+      <div id="birthdayMsg" style="font-size: 22px; color: #d6336c; font-weight: bold; margin-top: 10px; display: none;">
+          It's finally your birthday! 🎉✨
+      </div>
   </div>
-
   <!-- Block 5 (Password Gate) -->
   <div id="block5" class="block">
     <h2>Enter Password 🔑</h2>
@@ -247,6 +255,39 @@ function startSurprise() {
   // 4. (Optional) Chaho toh yahan ek "Next" button bhi auto-show kar sakte ho
   // Agar next button pehle se niche hai toh wo dikhta rahega
     }
+    function startCountdown() {
+    // 23 March 2026 ki date
+    const targetDate = new Date("March 23, 2026 00:00:00").getTime();
+
+    const timerInterval = setInterval(function() {
+        const now = new Date().getTime();
+        const distance = targetDate - now;
+
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        const timerElement = document.getElementById("timer");
+        const msgElement = document.getElementById("birthdayMsg");
+
+        if (distance < 0) {
+            clearInterval(timerInterval);
+            timerElement.innerHTML = "00:00:00:00";
+            timerElement.style.color = "#ff4d6d";
+            msgElement.style.display = "block"; // Message dikhaye jab time khatam ho
+        } else {
+            timerElement.innerHTML = 
+                (days < 10 ? "0" + days : days) + ":" + 
+                (hours < 10 ? "0" + hours : hours) + ":" + 
+                (minutes < 10 ? "0" + minutes : minutes) + ":" + 
+                (seconds < 10 ? "0" + seconds : seconds);
+        }
+    }, 1000);
+}
+
+// Page load hote hi timer shuru ho jaye
+window.addEventListener('load', startCountdown);
   </script>
 
 </body>
