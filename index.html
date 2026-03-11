@@ -161,17 +161,25 @@
   </div>
 
   <!-- Block 6 (Final Message) -->
-   <div id="messageBlock" class="block">
-  <p>🎂 Happy Birthday ✨<br><br>
-  Another year, another reason to celebrate the wonderful person you are.<br><br>
-  I liked you. The words came late, the story ended fast, but the feeling was true.</p>
-  
-  <button class="azure-btn" onclick="showBlock(7)">Next ❤️</button>
-   </div>
-  <div id="block7" class="block">
+    <div id="block6" class="block">
+  <h2 style="font-family: 'Times New Roman', serif; letter-spacing: 2px;">The Final Verse</h2>
+  <p style="text-align: left; line-height: 1.8; font-family: 'Georgia', serif; font-size: 17px; color: #444;">
+    We met in a random gathering of voices, a quiet rhyme in a loud room. Day by day, we wrote a story without a title, turning pages from 2024 into the heart of 2025. <br><br>
+    October came, and the ink spilled. <i>"I like you... sorry, sorry."</i> I was a poet who lost his rhythm, terrified of the very words I had finally found. I closed the book and vanished, hiding in the margins because I didn't know how the next line should go.<br><br>
+    But you didn't let the poem end in anger. You added your own soft cadence: <br>
+    <span style="color: #d6336c; font-style: italic; font-weight: bold;">"Tum bhi insaan hi ho, feelings aa jati hai."</span><br><br>
+    You understood the human heart behind the stuttered confession. The book has been closed for a long time now. We reached the 'block'—the final punctuation mark. But even in the silence, the verses I wrote for you remain etched in the ink that never fades.
+  </p>
+  <button class="azure-btn" onclick="showBlock(7)">View the Depths ❤️</button>
+</div>
+
+<div id="block7" class="block">
   <img src="Hero.jpg" alt="Iceberg" style="width:100%; border-radius:12px; box-shadow:0 0 15px rgba(0,0,0,0.3);">
-  <h2 style="margin-top: 15px;">Yes it's real</h2>
-  </div>
+  <h2 style="margin-top: 15px; color: #007fff; font-family: 'Times New Roman', serif;">Yes, it's real.</h2>
+  <p style="color: #555; font-style: italic; font-family: 'Georgia', serif;">
+    Happy Birthday, Varenya🎂.
+  </p>
+</div>
   <!-- Music file -->
   <audio id="bgMusic" src="Pretty.mp3"></audio>
 
@@ -183,17 +191,15 @@
     }
 
     // Password check
-    function checkPassword() {
-      let pass = document.getElementById("passwordInput").value;
-      let valid = ["chudail","Chudail","master","Master","Priyanshi","priyanshi"];
-      if(valid.includes(pass)) {
-        document.querySelectorAll('.block').forEach(b => b.style.display = 'none');
-        document.getElementById("messageBlock").style.display = "block";
-      } else {
-        alert("Wrong password ❌ Try again");
-      }
-    }
-
+     function checkPassword() {
+  let pass = document.getElementById("passwordInput").value;
+  let valid = ["chudail","Chudail","master","Master","Priyanshi","priyanshi"];
+  if(valid.includes(pass)) {
+    showBlock(6); // This ensures Block 6 shows and Block 5 hides
+  } else {
+    alert("Wrong password ❌ Try again");
+  }
+     }
     // Balloons animation
     function releaseBalloons() {
       for(let i=0; i<10; i++) {
