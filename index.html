@@ -225,10 +225,24 @@
     }
 
     // Play music
-    function playMusic() {
-      document.getElementById("bgMusic").play();
-    }
+     function playMusic() {
+  let audio = document.getElementById("bgMusic");
+  
+  // Start at zero volume
+  audio.volume = 0;
+  audio.play();
 
+  // Fade in effect: Increase volume every 200ms
+  let vol = 0;
+  let fadeIn = setInterval(() => {
+    if (vol < 0.7) { // 0.7 is the target volume (70%)
+      vol += 0.05;   // Increase by 5% each step
+      audio.volume = vol;
+    } else {
+      clearInterval(fadeIn); // Stop increasing once target is reached
+    }
+  }, 200); // 200ms interval
+     }
     // Decorate toggle
        let lanternInterval; // Isse hum lanterns ko control karenge
 
